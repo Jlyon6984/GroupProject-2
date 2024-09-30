@@ -62,6 +62,23 @@ def delete_task(tasks):
             print("Please enter a valid task number.")
     else:
         print("No tasks to delete.")
+
+def edit_task(tasks):
+    if tasks:
+        try:
+            task_index = int(input("Enter the task number to edit: ")) - 1
+            if 0 <= task_index < len(tasks):
+                new_task = input(f"Enter the new task description for Task {task_index + 1}: ")
+                tasks[task_index]["task"] = new_task
+                print(f"Task {task_index + 1} has been updated.")
+                save_tasks(tasks)
+            else:
+                print("Invalid task number.")
+        except ValueError:
+            print("Please enter a valid task number.")
+    else:
+        print("No tasks to edit.")
+
     
 # Main function
 def main():
@@ -72,8 +89,10 @@ def main():
         print("1. Add Task")
         print("2. Show Tasks")
         print("3. Delete Task")
-        print("4. Mark Task as done")
-        print("5. Exit")
+        print("4. Edit Task")
+        print("5. Mark Task as done")
+        
+        print("6. Exit")
         
         
         choice = input("Enter your choice: ")
@@ -84,9 +103,11 @@ def main():
             show_tasks(tasks)
         elif choice == '3':
             delete_task(tasks)
-        elif choice =="4":
+        elif choice == '4':
+            edit_task(tasks)
+        elif choice =='5':
              mark_task_done(tasks)
-        elif choice == "5":
+        elif choice == "6":
             print("Exiting the To-Do List.")
             break
         else:
