@@ -78,40 +78,54 @@ def edit_task(tasks):
             print("Please enter a valid task number.")
     else:
         print("No tasks to edit.")
+        
+# Password verification
+def verify_password(stored_password):
+    attempts = 3
+    while attempts > 0:
+        password = input("Enter the password: ")
+        if password == stored_password:
+            print("Access granted!")
+            return True
+        else:
+            attempts -= 1
+            print(f"Incorrect password. You have {attempts} attempt(s) left.")
+    print("Access denied!")
+    return False
 
     
 # Main function
 def main():
-    tasks = load_tasks()
+    stored_password = "pass1"  # going to hash this for more security after break
+    if verify_password(stored_password):
+        tasks = load_tasks()
 
-    while True:
-        print("\n===== To-Do List =====")
-        print("1. Add Task")
-        print("2. Show Tasks")
-        print("3. Delete Task")
-        print("4. Edit Task")
-        print("5. Mark Task as done")
-        
-        print("6. Exit")
-        
-        
-        choice = input("Enter your choice: ")
+        while True:
+            print("\n===== To-Do List =====")
+            print("1. Add Task")
+            print("2. Show Tasks")
+            print("3. Delete Task")
+            print("4. Edit Task")
+            print("5. Mark Task as Done")
+            print("6. Exit")
 
-        if choice == '1':
-            add_task(tasks)
-        elif choice == '2':
-            show_tasks(tasks)
-        elif choice == '3':
-            delete_task(tasks)
-        elif choice == '4':
-            edit_task(tasks)
-        elif choice =='5':
-             mark_task_done(tasks)
-        elif choice == "6":
-            print("Exiting the To-Do List.")
-            break
-        else:
-            print("Invalid choice. Please try again.")
+            choice = input("Enter your choice: ")
+
+            if choice == '1':
+                add_task(tasks)
+            elif choice == '2':
+                show_tasks(tasks)
+            elif choice == '3':
+                delete_task(tasks)
+            elif choice == '4':
+                edit_task(tasks)
+            elif choice == '5':
+                mark_task_done(tasks)
+            elif choice == "6":
+                print("Exiting the To-Do List.")
+                break
+            else:
+                print("Invalid choice. Please try again.")
 
 if __name__ == "__main__":
     main()
