@@ -50,6 +50,14 @@ class TestTodoApp(unittest.TestCase):
         tasks = [{"task": "Task 1", "done": False}]
         delete_task(tasks)
         self.assertEqual(len(tasks), 0)  # Task list should now be empty after deletion
+     @patch('builtins.input', side_effect=['1', 'Updated task description'])  # Mock input: task number and new description
+    @patch('builtins.open', new_callable=mock_open)
+   
+def test_edit_task(self, mock_file, mock_input):
+        tasks = [{"task": "Old task description", "done": False}]
+        edit_task(tasks)
+        self.assertEqual(tasks[0]['task'], 'Updated task description')  
+        self.assertFalse(tasks[0]['done'])  
 
 if __name__ == "__main__":
     unittest.main()
