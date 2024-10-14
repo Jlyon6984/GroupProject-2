@@ -80,7 +80,7 @@ def delete_task(tasks):
 
         print(Style.DIM + Fore.YELLOW + "No tasks to delete.")
        
- def edit_task(tasks):
+def edit_task(tasks):
     if tasks:
         try:
             task_index = int(input("Enter the task number to edit: ")) - 1
@@ -126,29 +126,29 @@ def main():
     while True:
         # print(Style.RESET_ALL)
         print("\n===== To-Do List =====")
-            print("1. Add Task")
-            print("2. Show Tasks")
-            print("3. Delete Task")
-            print("4. Edit Task")
-            print("5. Mark Task as Done")
-            print("6. Exit")
+        print("1. Add Task")
+        print("2. Show Tasks")
+        print("3. Delete Task")
+        print("4. Edit Task")
+        print("5. Mark Task as Done")
+        print("6. Exit")
         
         choice = input(Style.DIM + "Enter your choice: ")
         if choice == '1':
-                add_task(tasks)
-            elif choice == '2':
-                show_tasks(tasks)
-            elif choice == '3':
-                delete_task(tasks)
-            elif choice == '4':
-                edit_task(tasks)
-            elif choice == '5':
-                mark_task_done(tasks)
-            elif choice == "6":
-                print("Exiting the To-Do List.")
-                break
-            else:
-                print("Invalid choice. Please try again.")
+            add_task(tasks)
+        elif choice == '2':
+            show_tasks(tasks)
+        elif choice == '3':
+            delete_task(tasks)
+        elif choice == '4':
+            edit_task(tasks)
+        elif choice == '5':
+            mark_task_done(tasks)
+        elif choice == "6":
+            print("Exiting the To-Do List.")
+            break
+        else:
+            print("Invalid choice. Please try again.")
         print(Style.RESET_ALL)
 
    
