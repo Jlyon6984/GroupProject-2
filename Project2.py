@@ -77,10 +77,46 @@ def delete_task(tasks):
         except ValueError:
             print("Please enter a valid task number.")
     else:
+
         print(Style.DIM + Fore.YELLOW + "No tasks to delete.")
+       
+ def edit_task(tasks):
+    if tasks:
+        try:
+            task_index = int(input("Enter the task number to edit: ")) - 1
+            if 0 <= task_index < len(tasks):
+                new_task = input(f"Enter the new task description for Task {task_index + 1}: ")
+                tasks[task_index]["task"] = new_task
+                print(f"Task {task_index + 1} has been updated.")
+                save_tasks(tasks)
+            else:
+                print("Invalid task number.")
+        except ValueError:
+            print("Please enter a valid task number.")
+    else:
+        print("No tasks to edit.")
+        
+# Password verification
+def verify_password(stored_password):
+    attempts = 3
+    while attempts > 0:
+        password = input("Enter the password: ")
+        if password == stored_password:
+            print("Access granted!")
+            return True
+        else:
+            attempts -= 1
+            print(f"Incorrect password. You have {attempts} attempt(s) left.")
+    print("Access denied!")
+    return False
+
     
 # Main function
 def main():
+    stored_password = "pass1"  # going to hash this for more security after break
+    if verify_password(stored_password):
+        tasks = load_tasks()
+        
     os.system('cls' if os.name == 'nt' else 'clear')
     print(Style.RESET_ALL)
     init(autoreset=True)
@@ -90,31 +126,33 @@ def main():
     while True:
         # print(Style.RESET_ALL)
         print("\n===== To-Do List =====")
-        print("1. Add Task")
-        print("2. Show Tasks")
-        print("3. Delete Task")
-        print("4. Mark Task as done")
-        print("5. Exit")
-        
+            print("1. Add Task")
+            print("2. Show Tasks")
+            print("3. Delete Task")
+            print("4. Edit Task")
+            print("5. Mark Task as Done")
+            print("6. Exit")
         
         choice = input(Style.DIM + "Enter your choice: ")
-        print(Style.RESET_ALL)
-
         if choice == '1':
-            add_task(tasks)
-        elif choice == '2':
-            show_tasks(tasks)
-        elif choice == '3':
-            delete_task(tasks)
-        elif choice =="4":
-             mark_task_done(tasks)
-        elif choice == "5":
-            print("Exiting the To-Do List.")
-            break
-        else:
-            print("Invalid choice. Please try again.")
+                add_task(tasks)
+            elif choice == '2':
+                show_tasks(tasks)
+            elif choice == '3':
+                delete_task(tasks)
+            elif choice == '4':
+                edit_task(tasks)
+            elif choice == '5':
+                mark_task_done(tasks)
+            elif choice == "6":
+                print("Exiting the To-Do List.")
+                break
+            else:
+                print("Invalid choice. Please try again.")
         print(Style.RESET_ALL)
 
+   
+    
 if __name__ == "__main__":
     main()
             
