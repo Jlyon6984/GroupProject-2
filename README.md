@@ -51,8 +51,9 @@ edit_task()
 verify_password()
 
 # Further Documentation
-All tasks are stored in a Json file called tasks.json
-We implemented Colorama to add color to the text in the terminal. When completing an action, the result of that action will be written in green. 
+All tasks are stored in a Json file called tasks.json.
+
+Colorama was implemented into the program to add color to the text in the terminal. When completing an action, the result of that action will be written in green. If an action is not completed due to an invalid option or the status of the task is incomplete, the message will be written in red. 
 
 ## Contribution
 Pull requests are welcome. For major changes, please open an issue first
