@@ -1,6 +1,6 @@
 # GroupProject-2
 
-Repository for software engineering project#2 focusing on development of a To-Do-List
+Repository for Software Engineering project #2 focusing on development of a To-Do-List
 This repository was created for our second group project for CS 230, Software Engineering meant to create a to-do List, that enables you to load and save tasks in a file, add tasks, display the tasks, delete tasks, edit tasks, and mark tasks as completed. A password must be entered into the terminal before accessing the to-do list.
 
 # Installation 
