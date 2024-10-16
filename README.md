@@ -43,9 +43,11 @@ mark_task_done()
 delete_task()
 
 #Access a certain task and make changes to it
+
 edit_task()
 
 #Creates a password needed to access the to-do list
+
 verify_password()
 
 # Further Documentation
