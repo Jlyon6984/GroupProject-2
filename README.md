@@ -34,9 +34,9 @@ add_Task()
 
 show_Tasks()
 
-#Mark tasks in the Json file as completed
+#Changes the status of a task(Complete, Incomplete, Inprogress, etc)
 
-mark_task_done()
+update_task_status()
 
 #deletes a task from the Json file
 
