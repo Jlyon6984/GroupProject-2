@@ -6,6 +6,7 @@ This repository was created for our second group project for CS 230, Software En
 # Installation 
 
 Download the files and open them in whatever code editor you prefer, or use git to clone the repository.
+
 git clone https://github.com/Jlyon6984/GroupProject-2.git
 
 # Usage
@@ -14,24 +15,31 @@ Python
 # Functions
 
 #Load tasks into Json file
+
 load_Tasks()
 
 #Save tasks to Json file
+
 save_Tasks()
 
 #Clear all the tasks from the Json file
+
 clear_Tasks()
 
 #Add a task into the Json file
+
 add_Task()
 
 #Displays tasks written in the Json file
+
 show_Tasks()
 
 #Mark tasks in the Json file as completed
+
 mark_task_done()
 
 #deletes a task from the Json file
+
 delete_task()
 
 #Access a certain task and make changes to it
