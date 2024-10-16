@@ -62,6 +62,6 @@ to discuss what you would like to change.
 Please make sure to update tests as appropriate.
 
 Current Contributors: 
-  David Headen, Jake Lyon, Wyatt Harris, Riker Sweasley
+  David Headen, Jake Lyon, Wyatt Harris, Riker Sweazey
 
 
