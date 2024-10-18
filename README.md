@@ -1,13 +1,15 @@
 # GroupProject-2
 
 Repository for Software Engineering project #2 focusing on development of a To-Do-List
-This repository was created for our second group project for CS 230, Software Engineering meant to create a to-do List, that enables you to load and save tasks in a file, add tasks, display the tasks, delete tasks, edit tasks, and mark tasks as completed. A password must be entered into the terminal before accessing the to-do list.
+This repository was created for our second group project for CS 230 Software Engineering, meant to create a to-do list that enables you to load and save tasks in a file, add tasks, display the tasks, delete tasks, edit tasks, and mark tasks as completed. A password must be entered into the terminal before accessing the to-do list.
 
 # Installation 
 
 Download the files and open them in whatever code editor you prefer, or use git to clone the repository.
 
-git clone https://github.com/Jlyon6984/GroupProject-2.git
+Git clone https://github.com/Jlyon6984/GroupProject-2.git
+
+To run the program, enter the desired password to access the commands to make changes to the to-do list. 
 
 # Usage
 Python
@@ -16,7 +18,7 @@ Python
 
 #Load tasks into Json file
 
-load_Tasks()
+load_tasks()
 
 #Save tasks to Json file
 
