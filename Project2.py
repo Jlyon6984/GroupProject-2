@@ -146,16 +146,23 @@ def main():
 
     while True:
         # print(Style.RESET_ALL)
+
         print(Style.BRIGHT + "\n===== To-Do List =====")
+
+        print("\n===== To-Do List =====")
+
         print("1. Add Task")
         print("2. Show Tasks")
         print("3. Delete Task")
         print("4. Edit Task")
+
         print("5. Change Task Status")
+
         print("6. Exit")
         
         choice = input(Style.DIM + "Enter your choice: ")
         if choice == '1':
+
                 add_task(tasks)
         elif choice == '2':
                 show_tasks(tasks)
@@ -170,6 +177,7 @@ def main():
                 break
         else:
                 print("Invalid choice. Please try again.")
+
         print(Style.RESET_ALL)
 
    
