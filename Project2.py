@@ -2,23 +2,26 @@ import json
 import os
 from colorama import Fore, Back, Style, init
 
+currentfile = "tasks.json"
+
 
 # Load tasks from file
-def load_tasks(filename="tasks.json"):
+def load_tasks():
     try:
-        with open(filename, "r") as file:
+        with open(currentfile, "r") as file:
             return json.load(file)
+        
     except FileNotFoundError:
         return []
 
 # Save tasks to file
-def save_tasks(tasks, filename="tasks.json"):
-    with open(filename, "w") as file:
+def save_tasks(tasks):
+    with open(currentfile, "w") as file:
         json.dump(tasks, file, indent=4)
 
 # Clears tasks in file
-def clear_tasks(tasks, filename="tasks.json"):
-    with open(filename, "w") as file:
+def clear_tasks(tasks):
+    with open(currentfile, "w") as file:
         json.dump([], file)
         
 # Add a task
@@ -29,6 +32,24 @@ def add_task(tasks):
     print(Fore.GREEN + "Task added!")
     save_tasks(tasks)
 
+def add_list(tasks):
+    newfile = input("Enter the name of the list: ")
+    with open(newfile,'w') as f:
+        json.dump([],f)
+    print(newfile," created")
+
+def change_list(tasks):
+    global currentfile
+    newfile = input("Enter the name of the list: ")
+    if not os.path.exists(newfile):
+        print("File not found")
+    else:
+        currentfile = newfile
+        tasks.clear()
+
+    
+
+    
 # Show all tasks
 def show_tasks(tasks):
     if tasks:
@@ -141,6 +162,8 @@ def main():
     os.system('cls' if os.name == 'nt' else 'clear')
     print(Style.RESET_ALL)
     init(autoreset=True)
+    
+    
 
     tasks = load_tasks()
 
@@ -155,10 +178,11 @@ def main():
         print("2. Show Tasks")
         print("3. Delete Task")
         print("4. Edit Task")
-
         print("5. Change Task Status")
+        print("6. Change List")
+        print("7. Add List")
+        print("8. Exit")
 
-        print("6. Exit")
         
         choice = input(Style.DIM + "Enter your choice: ")
         if choice == '1':
@@ -171,10 +195,16 @@ def main():
         elif choice == '4':
                 edit_task(tasks)
         elif choice == '5':
-                update_task_status(tasks)  
-        elif choice == "6":
-                print("Exiting the To-Do List.")
-                break
+            update_task_status(tasks)
+        elif choice == '6':
+            change_list(tasks)
+            tasks = load_tasks()
+        elif choice == "7":
+            add_list(tasks)
+        elif choice == "8":
+            print("Exiting the To-Do List.")
+            break
+
         else:
                 print("Invalid choice. Please try again.")
 
