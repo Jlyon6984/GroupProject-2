@@ -28,7 +28,7 @@ def clear_tasks(tasks):
 def add_task(tasks):
     print(Style.RESET_ALL)
     task = input("Enter the task: ")
-    tasks.append({"task": task, "done": False})
+    tasks.append({"task": task, "status": "Incomplete"})
     print(Fore.GREEN + "Task added!")
     save_tasks(tasks)
 
@@ -55,20 +55,40 @@ def show_tasks(tasks):
     if tasks:
         print(Style.BRIGHT + "\nTasks:")
         for index, task in enumerate(tasks):
-            status = Fore.GREEN + "Done" if task["done"] else Fore.RED + "Not Done"
+            currentStatus = task["status"]
+            status = Fore.GREEN + "Done" if currentStatus == "Complete" else Fore.YELLOW + "In Progress" if currentStatus == "InProgress" else Fore.RED + "Incomplete" if currentStatus == "Incomplete" else Fore.MAGENTA + currentStatus
             print(f"{index + 1}. {task['task']} - {status}")
     else:
         print(Fore.YELLOW + "No tasks to show.")
         # print(Style.RESET_ALL)
         
 # Mark a task as done
-def mark_task_done(tasks):
+def update_task_status(tasks):
     if tasks:
         try:
-            task_index = int(input(Style.BRIGHT + "Enter the task number to mark as done: ")) - 1
+            task_index = int(input(Style.BRIGHT + "Enter the task # you want to update: ")) - 1
+            
             if 0 <= task_index < len(tasks):
-                tasks[task_index]["done"] = True
-                print(Fore.GREEN + f"Task {task_index + 1} marked as done!")
+                print(Fore.GREEN + "1. Complete")
+                print(Fore.YELLOW + "2. In Progress")
+                print(Fore.RED + "3. Incomplete")
+                print(Fore.MAGENTA + "4. Custom/Other")
+                
+                newStatus = int(input(Style.BRIGHT + "Enter what status you would like to mark it as: "))
+                
+                if newStatus == 1:
+                    tasks[task_index]["status"] = "Complete"
+                elif newStatus == 2:
+                    tasks[task_index]["status"] = "In Progress"
+                elif newStatus == 3:
+                    tasks[task_index]["status"] = "Incomplete"
+                elif newStatus == 4:
+                    tasks[task_index]["status"] = input(Style.BRIGHT + "Enter your custom status: ")
+                else:
+                    print(Fore.RED + "Invalid status option.")
+                    return
+                
+                print(Fore.GREEN + f"Task {task_index + 1} marked as {tasks[task_index]['status']}!")
                 save_tasks(tasks)
             else:
                 print(Fore.RED + "Invalid task number.")
@@ -76,6 +96,7 @@ def mark_task_done(tasks):
             print("Please enter a valid task number.")
     else:
         print(Style.DIM + Fore.YELLOW + "No tasks to mark as done.")
+
         
 
 # Delete a task
@@ -148,27 +169,33 @@ def main():
 
     while True:
         # print(Style.RESET_ALL)
+
+        print(Style.BRIGHT + "\n===== To-Do List =====")
+
         print("\n===== To-Do List =====")
+
         print("1. Add Task")
         print("2. Show Tasks")
         print("3. Delete Task")
         print("4. Edit Task")
-        print("5. Mark Task as Done")
+        print("5. Change Task Status")
         print("6. Change List")
         print("7. Add List")
         print("8. Exit")
+
         
         choice = input(Style.DIM + "Enter your choice: ")
         if choice == '1':
-            add_task(tasks)
+
+                add_task(tasks)
         elif choice == '2':
-            show_tasks(tasks)
+                show_tasks(tasks)
         elif choice == '3':
-            delete_task(tasks)
+                delete_task(tasks)
         elif choice == '4':
-            edit_task(tasks)
+                edit_task(tasks)
         elif choice == '5':
-            mark_task_done(tasks)
+            update_task_status(tasks)
         elif choice == '6':
             change_list(tasks)
             tasks = load_tasks()
@@ -177,8 +204,10 @@ def main():
         elif choice == "8":
             print("Exiting the To-Do List.")
             break
+
         else:
-            print("Invalid choice. Please try again.")
+                print("Invalid choice. Please try again.")
+
         print(Style.RESET_ALL)
 
    
