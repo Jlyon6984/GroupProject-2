@@ -1,6 +1,11 @@
 import json
 import os
 from colorama import Fore, Back, Style, init
+from dotenv import load_dotenv
+
+load_dotenv('Secrets.env')
+
+secret = os.getenv("PASS_KEY")
 
 currentfile = "tasks.json"
 
@@ -155,63 +160,64 @@ def verify_password(stored_password):
     
 # Main function
 def main():
-    stored_password = "pass1"  # going to hash this for more security after break
+    
+    stored_password = secret  # going to hash this for more security after break
     if verify_password(stored_password):
         tasks = load_tasks()
         
-    os.system('cls' if os.name == 'nt' else 'clear')
-    print(Style.RESET_ALL)
-    init(autoreset=True)
-    
-    
 
-    tasks = load_tasks()
-
-    while True:
-        # print(Style.RESET_ALL)
-
-        print(Style.BRIGHT + "\n===== To-Do List =====")
-
-        print("\n===== To-Do List =====")
-
-        print("1. Add Task")
-        print("2. Show Tasks")
-        print("3. Delete Task")
-        print("4. Edit Task")
-        print("5. Change Task Status")
-        print("6. Change List")
-        print("7. Add List")
-        print("8. Exit")
-
+        os.system('cls' if os.name == 'nt' else 'clear')
+        print(Style.RESET_ALL)
+        init(autoreset=True)
         
-        choice = input(Style.DIM + "Enter your choice: ")
-        if choice == '1':
+        
 
+        tasks = load_tasks()
+
+        while True:
+            # print(Style.RESET_ALL)
+
+            print(Style.BRIGHT + "\n===== To-Do List =====")
+
+            print("\n===== To-Do List =====")
+
+            print("1. Add Task")
+            print("2. Show Tasks")
+            print("3. Delete Task")
+            print("4. Edit Task")
+            print("5. Change Task Status")
+            print("6. Change List")
+            print("7. Add List")
+            print("8. Exit")
+
+            
+            choice = input(Style.DIM + "Enter your choice: ")
+            if choice == '1':
                 add_task(tasks)
-        elif choice == '2':
+            elif choice == '2':
                 show_tasks(tasks)
-        elif choice == '3':
+            elif choice == '3':
                 delete_task(tasks)
-        elif choice == '4':
+            elif choice == '4':
                 edit_task(tasks)
-        elif choice == '5':
-            update_task_status(tasks)
-        elif choice == '6':
-            change_list(tasks)
-            tasks = load_tasks()
-        elif choice == "7":
-            add_list(tasks)
-        elif choice == "8":
-            print("Exiting the To-Do List.")
-            break
+            elif choice == '5':
+                update_task_status(tasks)
+            elif choice == '6':
+                change_list(tasks)
+                tasks = load_tasks()
+            elif choice == "7":
+                add_list(tasks)
+            elif choice == "8":
+                print("Exiting the To-Do List.")
+                break
 
-        else:
+            else:
                 print("Invalid choice. Please try again.")
 
-        print(Style.RESET_ALL)
 
-   
-    
+
+       
+        
 if __name__ == "__main__":
     main()
             
