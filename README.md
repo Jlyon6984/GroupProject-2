@@ -52,8 +52,16 @@ edit_task()
 
 verify_password()
 
+#Creates a JSON file to act as another to-do list
+
+add_list()
+
+#changes which to-do list is accessed 
+
+change_list()
+
 # Further Documentation
-All tasks are stored in a Json file called tasks.json.
+All tasks are stored in JSON files, the first file accessed is tasks.json. More lists can be made with the creation of more JSON files.
 
 Colorama was implemented into the program to add color to the text in the terminal. When completing an action, the result of that action will be written in green. If an action is not completed due to an invalid option or the status of the task is incomplete, the message will be written in red. 
 
