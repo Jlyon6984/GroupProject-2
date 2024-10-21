@@ -6,9 +6,9 @@ This repository was created for our second group project for CS 230 Software Eng
 # Installation 
 
 Download the files and open them in whatever code editor you prefer, or use git to clone the repository.
-'''bash
-Git clone https://github.com/Jlyon6984/GroupProject-2.git
-'''
+```bash
+git clone https://github.com/Jlyon6984/GroupProject-2.git
+```
 To run the program, enter the desired password to access the commands to make changes to the to-do list. 
 
 # Usage
