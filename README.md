@@ -15,7 +15,7 @@ To run the program, enter the desired password to access the commands to make ch
 Python
 
 # Functions
-
+```python
 #Load tasks into Json file
 
 load_tasks()
@@ -59,7 +59,7 @@ add_list()
 #changes which to-do list is accessed 
 
 change_list()
-
+```
 # Further Documentation
 All tasks are stored in JSON files, the first file accessed is tasks.json. More lists can be made with the creation of more JSON files.
 
