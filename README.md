@@ -48,7 +48,7 @@ delete_task()
 
 edit_task()
 
-#Creates a password needed to access the to-do list
+#Verifies the password defined in the user's environmental variable file.
 
 verify_password()
 
@@ -64,6 +64,8 @@ change_list()
 All tasks are stored in JSON files, the first file accessed is tasks.json. More lists can be made with the creation of more JSON files.
 
 Colorama was implemented into the program to add color to the text in the terminal. When completing an action, the result of that action will be written in green. If an action is not completed due to an invalid option or the status of the task is incomplete, the message will be written in red. 
+
+Python-Dotenv was implemented in the program to allow the use of environmental varaibles for password verification. an environmental variable can be setup in the root directory or parent directory of the project file and will then allow the user to establish a password that is not hardcoded into the project.
 
 ## Contribution
 Pull requests are welcome. For major changes, please open an issue first
